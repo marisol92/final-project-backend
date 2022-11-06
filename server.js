@@ -1,5 +1,6 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 const routerIndex = require('./routes');
@@ -20,8 +21,9 @@ app.set('views', './views');
 
 // Middlewares
 app.use(express.static('public'));
-app.use(express.urlencoded({extended: false }))
-app.use(express.json())
+app.use(express.urlencoded({extended: false }));
+app.use(express.json());
+app.use(methodOverride('_method'));
 
 
 

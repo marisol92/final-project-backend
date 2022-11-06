@@ -21,8 +21,6 @@ const getPosts = async (req, res) => {
 
 const showPost = async (req, res) => {
 
-    
-
     try {
         
         const post = await Post.findOne({slug: req.params.slug}).lean();
@@ -39,9 +37,63 @@ const showPost = async (req, res) => {
         console.error(err)
         res.status(404).send('La ruta no fue encontrada')
     }
+};
+
+const deletePost = async (req, res) => {
+    try {
+        
+        await Post.findByIdAndDelete(req.params.id);
+        res.redirect('/posts')
+
+    } catch (error) {
+        console.log('Error DELETE', error)
+    }
+};
+
+const newPost = (req, res) => {
+    res.status(200).render('new')
+};
+
+const createPost = async (req,res) => {
+
+    try {
+
+        const {title, body} = req.body;
+        let post = new Post()
+        post.title = title;
+        post.body = body;
+
+        post = await post.save();
+        res.redirect(`/posts/${post.slug}`)
+
+    } catch (error) {
+        console.log('Error CREATE', error)
+    }
+    
+};
+
+const showEditPost = async (req,res) => {
+
+    try {
+        const post = await Post.findById(req.params.id).lean();
+        res.status(200).render('edit', 
+            {
+                title: 'Editando post',
+                post
+            }
+        )
+    } catch (error) {
+        console.log('Error EDIT', error);
+    }
+
+
 }
 
 module.exports = {
     getPosts,
     showPost,
+    deletePost,
+    createPost,
+    newPost,
+    showEditPost
 }

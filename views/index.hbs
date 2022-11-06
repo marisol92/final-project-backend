@@ -1,5 +1,9 @@
 <h1>Listado de Posts</h1>
 
+<hr>
+    <a href="/posts/new" class="button is-success">+ Create Post</a>
+</hr>
+
 <table class="table is-fullwidth">
     <thead>
         <tr>
@@ -14,13 +18,13 @@
             <td width="30%">{{this.title}}</td>
             <td width="40%">{{this.body}}</td>
             <td class="field is-grouped">
-                <a href="/posts/{{{this.slug}}}" class="button is-primary">Ver</a>
-                <button class="button is-info is-light"> Editar</button>
+                <a href="/posts/{{{this.slug}}}" class="button is-primary">See more</a>
+                <a href="/posts/edit/{{{this._id}}}" class="button is-info is-light">Editar</a>
                 
-                <form class="control" action="/posts/{{this._id}}" method="POST">
-                    <button class="button is-danger"> 
+                <form class="control" action="/posts/{{{this._id}}}?_method=DELETE" method="POST">
+                    <button type="submit" class="button is-danger"> 
                         <ion-icon name="trash-outline"></ion-icon>
-                        Eliminar 
+                        Delete 
                     </button>
                 </form>
 
