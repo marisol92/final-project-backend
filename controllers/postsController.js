@@ -19,6 +19,29 @@ const getPosts = async (req, res) => {
     }
 };
 
+const showPost = async (req, res) => {
+
+    
+
+    try {
+        
+        const post = await Post.findOne({slug: req.params.slug}).lean();
+        if( post === null) return res.redirect('/')
+
+        res.render('show', 
+            {
+                title: ` InfoBlog - ${post.title}`,
+                post
+            } 
+        )
+
+    } catch (err) {
+        console.error(err)
+        res.status(404).send('La ruta no fue encontrada')
+    }
+}
+
 module.exports = {
     getPosts,
+    showPost,
 }
