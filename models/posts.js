@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { default: slugify } = require('slugify');
 
-const postSchema = new mongoose.Schema(
+const PostSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -24,11 +24,11 @@ const postSchema = new mongoose.Schema(
 
 //Middleware 
 //TODO: llevar este middleware a un archivo separado. 
-postSchema.pre('validate', function(next){
+PostSchema.pre('validate', function(next){
     if(this.title){
         this.slug = slugify(this.title, {lower:true, strict:true})
     };
     next();
 });
 
-module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('Post', PostSchema)

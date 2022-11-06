@@ -3,8 +3,8 @@ const { engine } = require('express-handlebars');
 const methodOverride = require('method-override');
 require('dotenv').config();
 
-const routerIndex = require('./routes');
 const { dbConnection } = require('./database/config');
+const { routerAuth } = require('./routes/auth');
 const { routerDev } = require('./routes/db');
 const { routerPosts } = require('./routes/posts');
 
@@ -28,9 +28,9 @@ app.use(methodOverride('_method'));
 
 
 //routes
-app.use('/', routerIndex);
-app.use('/', routerDev);
+app.use('/', routerDev); // Solo para desarrollo
 app.use('/', routerPosts);
+app.use('/', routerAuth);
 
 const PORT = process.env.PORT;
 app.listen(PORT, err => {

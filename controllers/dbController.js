@@ -1,7 +1,7 @@
 const express = require('express');
 
 const { generatePosts } = require('../helpers/posts');
-const Post = require('../models/posts');
+const Post = require('../models/Posts');
 
 const generatePostController = async (req, res) => {
     
