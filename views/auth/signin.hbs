@@ -1,7 +1,7 @@
 <h1>Sign In</h1>
 
 <div class="field">
-    <form action="/auth/signup" method="POST">
+    <form action="/auth/signin" method="POST">
 
         <div class="field">
             <label for="email">Email</label>
@@ -15,10 +15,11 @@
         </div>
 
         <div class="field">
-            <p class="control">
-                <a class="button is-success">
-                Login
-                </a>
-            </p>
+            <div class="control">
+                <button type="submit" class="button is-success">Sign In</button>
+                {{!-- <a class="button google is-primary" href="/login/federated/google">Sign in with Google</a> --}}
+            </div>
+
+            
     </form>
 </div>

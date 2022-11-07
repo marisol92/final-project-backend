@@ -25,11 +25,11 @@ const AuthSchema = new mongoose.Schema(
 
 AuthSchema.methods.passwordEncrypt = async password => {
     const salt = await bcrypt.genSalt(); // Semilla para despúes encriptar. 
-    return await bycript.hash(password, salt);
+    return await bcrypt.hash(password, salt);
 }
 
 AuthSchema.methods.checkPassword = async function(password) {
-    return await bycript.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
 }
 
 module.exports = mongoose.model('Auth', AuthSchema);
