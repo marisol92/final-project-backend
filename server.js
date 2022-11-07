@@ -8,10 +8,10 @@ const { engine } = require('express-handlebars');
 require('./config/passport');
 
 const {
-    SESSION_SECRET, DB_LOCAL_URI, PORT
+    SESSION_SECRET, DB_LOCAL_URI, PORT, DB_REMOTE_URI,
   } = process.env;
 
-const { dbConnection } = require('./database/config');
+const { dbConnection } = require('./config/database');
 const { routerAuth } = require('./routes/auth');
 const { routerDev } = require('./routes/db');
 const { routerPosts } = require('./routes/posts');
@@ -37,7 +37,7 @@ app.use(
         secret: SESSION_SECRET,
         resave: true,
         saveUninitialized: true,
-        store: MongoStore.create({ mongoUrl: DB_LOCAL_URI})
+        store: MongoStore.create({ mongoUrl: DB_REMOTE_URI})
     })
 );
 app.use(passport.initialize());

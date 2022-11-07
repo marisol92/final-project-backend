@@ -52,7 +52,7 @@ const getAuthSignin = (req,res) => {
 };
 
 const signin = passport.authenticate('local', {
-    successRedirect: '/posts',
+    successRedirect: '/home',
     failureRedirect: '/auth/signin',
 })
 

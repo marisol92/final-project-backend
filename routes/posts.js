@@ -12,7 +12,7 @@ const {
 } = require('../controllers/postsController');
 
 //TODO: pasar a otra ruta '/home' y crear otro archivo
-routerPosts.get('/', getPostCard)
+routerPosts.get('/home', getPostCard)
 routerPosts.get('/posts', getPosts);
 // TODO: ver si despues lo lo pasamos a otra ruta como /newPost (?)
 routerPosts.get('/posts/new', newPost)

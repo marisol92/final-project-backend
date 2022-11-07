@@ -1,7 +1,7 @@
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const { Strategy } = require('passport-local');
-const Auth = require('../models/Auth')
+const Auth = require('../../models/Auth')
 
 passport.use(
     new Strategy(

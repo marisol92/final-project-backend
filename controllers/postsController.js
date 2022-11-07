@@ -41,7 +41,7 @@ const showPost = async (req, res) => {
     try {
         
         const post = await Post.findOne({slug: req.params.slug}).lean();
-        if( post === null) return res.redirect('/')
+        if( post === null) return res.redirect('/home')
 
         res.render('show', 
             {
