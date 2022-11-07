@@ -6,7 +6,7 @@ const Auth = require('../models/Auth')
 passport.use(
     new Strategy(
         {
-            usernameField: email, 
+            usernameField: 'email', 
         }, 
         async (email, password, done) => {
 

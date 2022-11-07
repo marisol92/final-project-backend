@@ -5,6 +5,7 @@ const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const session = require('express-session');
 const { engine } = require('express-handlebars');
+require('./config/passport');
 
 const {
     SESSION_SECRET, DB_LOCAL_URI, PORT

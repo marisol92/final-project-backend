@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 
 const Auth = require('../models/Auth');
 
@@ -50,12 +51,16 @@ const getAuthSignin = (req,res) => {
     res.render('auth/signin')
 };
 
-const signin = (req,res) => {
-    res.render('auth/signin')
-};
+const signin = passport.authenticate('local', {
+    successRedirect: '/posts',
+    failureRedirect: '/auth/signin',
+})
 
-const logout = (req,res) => {
-    res.send('logout')
+const logout = async (req, res, next) => {
+    await req.logout((err) => {
+        if( err ) return next();
+        res.redirect('/auth/signin')
+    })
 }
 
 
