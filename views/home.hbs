@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/home">
-      <img src="" width="112" height="28">
+      <img src="./assets/img/logo-universityBlog.svg" width="112" height="28">
     </a>
   </div>
 
@@ -11,11 +11,21 @@
         Home
       </a>
 
+      <a href="/topics" class="navbar-item">
+        Topics
+      </a>
+      {{!-- TODO: Agregar una ruta nueva para implementar temas creados por los usuarios --}}
+
       <a href="/posts" class="navbar-item">
         My Posts
       </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item">
+          <input class="input" type="text" placeholder="search">
+          <button type="search">search</button> {{!-- TODO: darle formato al search, para que busque por topics, por posts y usuario --}}
+      </div>
+
+     <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           User
         </a>
@@ -30,6 +40,7 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
+        
         <div class="buttons">
           <a href='/auth/logout' class="button is-primary">
             <strong>Logout</strong>

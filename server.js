@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config();
+const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const MongoStore = require('connect-mongo');
 const passport = require('passport');
@@ -15,6 +16,7 @@ const { dbConnection } = require('./config/database');
 const { routerAuth } = require('./routes/auth');
 const { routerDev } = require('./routes/db');
 const { routerPosts } = require('./routes/posts');
+
 
 //Inicializo express
 const app = express();
@@ -42,8 +44,13 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
-
+app.use((req,res,next) => {
+    res.locals.todo_ok = req.flash('todo_ok');
+    res.locals.todo_error = req.flash('todo_error');
+    next();
+})
 
 //routes
 app.use('/', routerDev); // Solo para desarrollo

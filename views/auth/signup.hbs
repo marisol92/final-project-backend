@@ -1,17 +1,58 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+        <img src="../assets/img/logo-universityBlog.svg" width="112" height="28">
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/" class="navbar-item">
+                Inicio
+            </a>
+
+        </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a href='/auth/signin' class="button is-primary">
+            <strong>Sign In</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+</nav>
+
+
 <h1>Sign Up</h1>
 
+{{#each errors}}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        {{this.msg}}
+    </div>
+{{/each }}
+     
+{{#if todo_error}}
+    <div class="notification is-danger">
+        <button class="delete"></button>
+        {{todo_error}}
+    </div>
+{{/if}}
 <div class="field">
     <form action="/auth/signup" method="POST">
 
         <div class="field">
             <label for="name">Name</label>
-            <input class="input" type="text" id="name" name="name" placeholder="Enter your name">
+            <input class="input" type="text" value="{{name}}" id="name" name="name" placeholder="Enter your name">
             </p>
         </div>
 
         <div class="field">
             <label for="email">Email</label>
-            <input class="input" type="email" id="email" name="email" placeholder="Enter your email">
+            <input class="input" value="{{email}}" type="email" id="email" name="email" placeholder="Enter your email">
             </p>
         </div>
 

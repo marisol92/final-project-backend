@@ -26,19 +26,23 @@ const signup = async (req,res) => {
 
         if( errors.length > 0){
             return res.render('auth/signup', {
-                errors
+                errors,
+                name,
+                email
             })
         }
 
         const userFound = await Auth.findOne({ email })
         
         if( userFound ){
+            req.flash('todo_error', "The email entered already exists")
             return res.redirect('/auth/signup')
         }
 
         const newUser = new Auth({name, email, password});
         newUser.password = await newUser.passwordEncrypt(password) ;
         await newUser.save(); 
+        req.flash("todo_ok", "Registered successfully")
         res.redirect('/auth/signin')
 
     } catch (error) {
@@ -54,11 +58,13 @@ const getAuthSignin = (req,res) => {
 const signin = passport.authenticate('local', {
     successRedirect: '/home',
     failureRedirect: '/auth/signin',
+    failureFlash: true,
 })
 
 const logout = async (req, res, next) => {
     await req.logout((err) => {
         if( err ) return next();
+        req.flash("todo_ok", "successfully logged out")
         res.redirect('/auth/signin')
     })
 }
