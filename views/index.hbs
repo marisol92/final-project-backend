@@ -1,46 +1,8 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/home">
-      <img src="./assets/img/logo-universityBlog.svg" width="112" height="28">
-    </a>
-  </div>
+<div class="nav">
+        {{> navbar}}
+</div>
 
-  <div id="navbarBasicExample is-right" class="navbar-menu">
-    <div class="navbar-start">
-      <a href="/home" class="navbar-item">
-        Home
-      </a>
-
-      <a href="/posts" class="navbar-item">
-        My Posts
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          User
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a href='/auth/logout' class="button is-primary">
-            <strong>Logout</strong>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<h2>Tus posts </h2>
+<h2>Tus posts</h2>
 
 <hr>
     <a href="/posts/new" class="button is-success">+ Create Post</a>
@@ -76,8 +38,3 @@
        {{/each}}
   </tbody>
 </table>
-
-
-
-    
-}

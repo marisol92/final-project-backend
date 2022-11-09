@@ -1,0 +1,88 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    {{#if user}}
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/home">
+            <img src="../assets/img/logo-universityBlog.svg" width="112" height="28">
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        
+        <div class="navbar-start">
+            
+            <a href="/home" class="navbar-item">
+                Posts
+            </a>
+
+            <a href="/topics" class="navbar-item">
+                Topics
+            </a>
+            
+            <a href="/posts" class="navbar-item">
+                My Posts
+            </a>
+
+            <div class="navbar-item">
+                <input class="input" type="text" placeholder="search">
+                <button class="button is-danger"type="search">search</button>
+            </div>
+
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                User
+                </a>
+
+                <div class="navbar-dropdown">
+                    <a class="navbar-item">
+                        About
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href='/auth/logout' class="button is-primary">
+                            <strong>Logout</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="../assets/img/logo-universityBlog.svg" width="112" height="28">
+            </a>
+        </div>
+
+            <a href="/" class="navbar-item">
+                Inicio
+            </a>
+            <a href="/home" class="navbar-item">
+                Posts
+            </a>
+            <a href="/topics" class="navbar-item">
+                Topics 
+            </a>
+
+            <div class="navbar-item">
+                <input class="input" type="text" placeholder="search">
+                <button class="button is-danger" type="search">search</button> {{!-- TODO: darle formato al search, para que busque por topics, por posts y usuario --}}
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a href='/auth/signin' class="button is-primary">
+                            <strong>Sign In</strong>
+                        </a>
+                        <a href='/auth/signup' class="button is-primary">
+                            <strong>Sign Up</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>    
+        </div>  
+    </div>
+    {{/if}}
+</nav>

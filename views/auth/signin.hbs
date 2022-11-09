@@ -1,28 +1,5 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-        <img src="../assets/img/logo-universityBlog.svg" width="112" height="28">
-        </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-        <div class="navbar-start">
-            <a href="/" class="navbar-item">
-                Inicio
-            </a>
-
-        </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a href='/auth/signup' class="button is-primary">
-            <strong>Sign Up</strong>
-          </a>
-        </div>
-      </div>
-    </div>
+<nav>
+    {{> navbar}}
 </nav>
 
 <h1>Sign In</h1>
@@ -34,7 +11,7 @@
     </div>
 {{/if}}
 
-{{#if todo_error}}
+{{#if todo_error}} 
     <div class="notification is-danger">
         <button class="delete"></button>
         {{todo_error}}
@@ -57,7 +34,7 @@
 
         <div class="field">
             <div class="control">
-                <button type="submit" class="button is-success">Sign In</button>
+                <button type="submit" class="button is-success">Login</button>
                 {{!-- <a class="button google is-primary" href="/login/federated/google">Sign in with Google</a> --}}
             </div>
 
